@@ -1,0 +1,17 @@
+Make a function to convert text to snake case
+
+const snakeCase = (input) => {
+  if (input === null || input === undefined) return '';
+  const str = String(input).trim()
+    .normalize && String(input).normalize('NFKD').replace(/\p{Diacritic}/gu, '') || String(input).trim();
+
+  let s = str
+    .replace(/([a-z0-9])([A-Z])/g, '$1_$2')
+    .replace(/[^A-Za-z0-9]+/g, '_')
+    .replace(/_+/g, '_')
+    .replace(/^_+|_+$/g, '');
+
+  return s.toLowerCase();
+};
+
+module.exports = { sleep, snakeCase };
